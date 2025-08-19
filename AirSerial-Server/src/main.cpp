@@ -15,7 +15,7 @@ void setup() {
   radio.begin();
   radio.setRetries(5, 15);         // delay=5*250µs=1250µs, count=15
   radio.setPALevel(RF24_PA_LOW);   // Power amplifier level
-  radio.setDataRate(RF24_250KBPS); // more robust link
+  radio.setDataRate(RF24_1MBPS);
   radio.setCRCLength(RF24_CRC_16);
   radio.openWritingPipe(address);
   radio.stopListening();
