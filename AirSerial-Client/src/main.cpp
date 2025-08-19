@@ -7,7 +7,7 @@
 
 RF24 radio(CE_PIN, CSN_PIN);
 const byte address[6] = "00001";
-
+ 
 #define CLIENT_BAUDRATE 115200
 
 // Setup radio settings
@@ -16,9 +16,9 @@ void setup() {
 
   radio.begin();
   radio.openReadingPipe(0, address);
-  radio.setRetries(5, 15);
+  radio.setRetries(0, 0);
   radio.setDataRate(RF24_1MBPS);
-  radio.setPALevel(RF24_PA_LOW);
+  radio.setPALevel(RF24_PA_HIGH);
   radio.setCRCLength(RF24_CRC_16);
   radio.startListening();
 }
