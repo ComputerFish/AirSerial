@@ -12,6 +12,7 @@ void setup() {
   Serial.begin(115200);
 
   radio.begin();
+  radio.enableDynamicPayloads();
   radio.setPALevel(RF24_PA_LOW);
   radio.setDataRate(RF24_1MBPS);
   radio.setCRCLength(RF24_CRC_16);

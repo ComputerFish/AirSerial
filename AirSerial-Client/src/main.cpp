@@ -15,6 +15,7 @@ void setup() {
   Serial.begin(CLIENT_BAUDRATE);
 
   radio.begin();
+  radio.enableDynamicPayloads();
   radio.openReadingPipe(0, address);
   radio.setRetries(0, 0);
   radio.setDataRate(RF24_1MBPS);
@@ -34,13 +35,18 @@ void loop() {
     if (len == 0 || len > 32) len = 32;          // safety clamp
     radio.read(buffer, len);
 
+    Serial.write(buffer, len);
+
     // Forward to client
-    for (uint8_t i = 0; i < len; i++) {
-      Serial.write(buffer[i]);
-    }
+    // for (uint8_t i = 0; i < len; i++) {
+    //   Serial.write(buffer[i]);
+    // }
 
     // Debug
-    // Serial.print("Forwarded ");
+    // Serial.print("\nReceived ");
+    // String myString = String(buffer);
+    // Serial.print(myString);
+    // Serial.print("\tForwarded ");
     // Serial.print(len);
     // Serial.println(" bytes to client");
   }
